@@ -20,7 +20,12 @@ app.set("view engine", "ejs");
 //home route
 app.get("/", (req, res) => {
   // res.send("hello world , hiiii");
-  res.render("home");
+  const data= {
+    title: "Home Page",
+    desc: "This is home page of my website",
+    name: "Lusifer",
+  }
+  res.render("home",data);
 });
 
 app.listen(port, () => {
