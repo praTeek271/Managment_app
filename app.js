@@ -17,20 +17,43 @@ app.use(expressLayout);
 app.set("layout", "./layouts/main");
 app.set("view engine", "ejs");
 
-//home route
-app.get("/", (req, res) => {
-  // res.send("hello world , hiiii");
-  const data= {
-    title: "Home Page",
-    desc: "This is home page of my website",
-    name: "Lusifer",
-  }
-  res.render("home",data);
-});
+//routes
 
-// coustomer route
-app.get("/customer", (req, res) => {
-  res.render("customer");
+app.use("/", require("./server/routes/customer"));
+
+
+// _________________________________________________________________________________________
+  // //home route
+  // app.get("/", (req, res) => {
+  //   // res.send("hello world , hiiii");
+  //   const data= {
+  //     title: "Home Page",
+  //     desc: "This is home page of my website",
+  //     name: "Lusifer",
+  //   }
+  //   res.render("home",data);
+  // });
+  // //home route
+  // app.get("/books", (req, res) => {
+  //   // res.send("hello world , hiiii");
+  //   const data= {
+  //     title: "Home Page",
+  //     desc: "This is home page of my website",
+  //   }
+  //   res.render("books",data);
+  // });
+
+  // // coustomer route
+  // app.get("/customer", (req, res) => {
+  //   res.render("customer");
+  // });
+// ___________________________________________________________________________________________
+
+
+// 404 page
+app.use((req, res) => {
+
+  res.status(404).render("404", { url: req.url.split("/")[1] });
 });
 
 app.listen(port, () => {

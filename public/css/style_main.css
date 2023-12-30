@@ -8,12 +8,10 @@
 }
 body {
   background: #e7e8e8;
-  font-size: 16px;
+  font-size: auto;
   font-weight: 400;
   line-height: 1.5;
   color: var(--text-color);
-
-  overflow-x: hidden;
 }
 a {
   color: var(--text-color);
@@ -25,9 +23,24 @@ a {
 }
 
 .form-control-dark {
-    border-color: var(--bs-gray);
-  }
-  .form-control-dark:focus {
-    border-color: #fff;
-    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
-  }
+  border-color: var(--bs-gray);
+}
+.form-control-dark:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+.special-reflection {
+  position: absolute;
+  rotate: 180deg;
+  mask-image: linear-gradient(transparent 53%, white 215%);
+  max-width: 519px;
+  z-index: 0;
+  background-size: cover;
+  height: 159px;
+}
+
+.btnx {
+  width: 55%;
+  height: auto;
+}
