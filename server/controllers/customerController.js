@@ -1,8 +1,8 @@
 // cutomer homepage
 
-exports.homepage =async(req,res)=>{
+exports.customer_homepage =async(req,res)=>{
     const local_data={
-        title:"Home Page",
+        title:"Customer Page",
         desc:"This is home page of my website",
         name:"Lusifer",
     }
