@@ -28,6 +28,11 @@ app.get("/", (req, res) => {
   res.render("home",data);
 });
 
+// coustomer route
+app.get("/customer", (req, res) => {
+  res.render("customer");
+});
+
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });
