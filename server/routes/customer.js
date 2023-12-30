@@ -3,7 +3,11 @@ const router = express.Router();
 const customerController = require('../controllers/customerController');
 
 // routes
-router.get('/',customerController.customer_homepage);
+router.get('/customer',customerController.customer_homepage);
+router.get('/books',customerController.books_homepage);
+router.get('/',customerController.homepage);
+router.get('/adduser',customerController.addcustomer);
+
 
 
 module.exports =router;
