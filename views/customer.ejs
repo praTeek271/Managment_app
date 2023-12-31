@@ -18,33 +18,32 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/adduser" method="POST">
+                            <form action="/customer" method="POST">
                                 <div class="mb-3">
                                     <label for="recipient-firstname" class="col-form-label">Recipient's First
                                         Name:</label>
-                                    <input type="text" class="form-control" required id="recipient-firstname"
-                                        name="recipient-firstname" placeholder="John">
+                                    <input type="text" class="form-control" required id="recipient_firstname"
+                                        name="recipient_firstname" placeholder="John">
                                 </div>
                                 <div class="mb-3">
                                     <label for="recipient-lastname" class="col-form-label">Recipient's Last
                                         Name:</label>
-                                    <input type="text" class="form-control" required id="recipient-laastname"
-                                        name="recipient-laastname" placeholder="Smith">
+                                    <input type="text" class="form-control" required id="recipient_laastname"
+                                        name="recipient_laastname" placeholder="Smith">
                                 </div>
                                 <div class="mb-3">
                                     <label for="address-text" class="col-form-label">Address:</label>
-                                    <textarea class="form-control" required id="address-text" name="address-text"
+                                    <textarea class="form-control" required id="address_text" name="address_text"
                                         placeholder="xyz Street ; City & State"></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone-no" class="col-form-label">Phone No:</label>
-                                    <input type="number" class="form-control" required id="phone-no" name="phone-no"
+                                    <input type="number" class="form-control" required id="phone_no" name="phone_no"
                                         placeholder="9999999999">
                                 </div>
                                 <div class="mb-3">
                                     <label for="credits" class="col-form-label">Credits:</label>
-                                    <input type="number" readonly class="form-control" name="credits" id="credits"
-                                        value="100">
+                                    <input type="number" class="form-control" name="credits" id="credits" value="100">
                                 </div>
                         </div>
                         <div class="form-group" style="padding: 0 0 3% 4%;">
@@ -86,7 +85,7 @@
     </ol>
 </div>
 
-<div aria-live="polite" aria-atomic="true" class="position-relative" data-bs-autohide="false">
+<div aria-live="polite" aria-atomic="true" class="position-relative" data-bs-autohide="true">
     <!-- Position it: -->
     <!-- - `.toast-container` for spacing between toasts -->
     <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
@@ -94,14 +93,14 @@
     <div class="toast-container top-0 end-0 p-3">
         <% if (message) { %>
             <!-- Then put toasts within -->
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
                 <div class="toast-header">
                     <strong class="me-auto">Bootstrap</strong>
                     <small class="text-body-secondary">just now</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body">
-                    <%= message %>
+                    <%= message %><span style="color:#2196F3;text-transform: uppercase;font-family: cursive;"><%= name %></span>
                 </div>
             </div>
             <!--  -->

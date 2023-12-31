@@ -6,7 +6,8 @@ const customerController = require('../controllers/customerController');
 router.get('/customer',customerController.customer_homepage);
 router.get('/books',customerController.books_homepage);
 router.get('/',customerController.homepage);
-router.post('/adduser',customerController.addPOSTcustomer);
+router.post('/customer',customerController.addPOSTcustomer);
+// router.get('/adduser',customerController.addPOSTcustomer);
 
 
 

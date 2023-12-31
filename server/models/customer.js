@@ -2,6 +2,10 @@ const mongoose = require ('mongoose');
 
 const schema =mongoose.Schema;
 const CustomerSchema = new schema({
+    name:{
+        type:String,
+        trim:true,
+    },
     firstname:{
         type:String,
         required:true,
@@ -21,4 +25,20 @@ const CustomerSchema = new schema({
         type:String,
         required:true,
     },
+    credits:{
+        type:Number,
+        // required:true,
+        trim:true,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAT: {
+        type: Date,
+    }
+
 });
+
+
+module.exports = mongoose.model('Customer', CustomerSchema);

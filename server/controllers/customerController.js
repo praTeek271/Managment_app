@@ -1,3 +1,4 @@
+const customerDB=require("../models/customer");
 // cutomer homepage
 
 exports.customer_homepage =async(req,res)=>{
@@ -35,13 +36,30 @@ exports.homepage =async(req,res)=>{
 
 
 exports.addPOSTcustomer = async (req, res) => {
-    let username = req.body['recipient-firstname'] + " " + req.body['recipient-lastname'];
+    let username = req.body.recipient_firstname;
    const local_data = {
         title: "Home Page",
         desc: "This is the home page of my website",
-        name: "Lusifer",
-        message: 'NEW user ADDED '+username,
+        name: username,
+        message: 'NEW user ADDED ',
     };
+    const newcustomer = new customerDB({
+        // name: username,
+        firstname: req.body.recipient_firstname,
+        lastname: req.body.recipient_laastname,
+        phone_no: req.body.phone_no,
+        address: req.body.address_text,
+        credits: req.body.credits,
+    });
+
     console.log(req.body);
+
+    try{
+        await customerDB.create(newcustomer);
+        // res.redirect('/customer');
+    }
+    catch(err){
+        console.log(err);
+    }
     res.render("customer", local_data);
 };
