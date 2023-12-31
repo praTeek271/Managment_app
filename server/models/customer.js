@@ -36,6 +36,7 @@ const CustomerSchema = new schema({
     },
     updatedAT: {
         type: Date,
+        default: Date.now
     }
 
 });

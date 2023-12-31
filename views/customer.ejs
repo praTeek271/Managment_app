@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row ">
         <div class="col">
-            <h1>Welcome, Customer!</h1>
+            <h1>Welcome, <%= local_data.name %>!</h1>
         </div>
         <div class="col-3"></div>
 
@@ -91,7 +91,7 @@
     <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
     <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
     <div class="toast-container top-0 end-0 p-3">
-        <% if (message) { %>
+        <% if (notify.message) { %>
             <!-- Then put toasts within -->
             <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
                 <div class="toast-header">
@@ -100,7 +100,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body">
-                    <%= message %><span style="color:#2196F3;text-transform: uppercase;font-family: cursive;"><%= name %></span>
+                    <%= notify.message %><span style="color:#2196F3;text-transform: uppercase;font-family: cursive;"><%= notify.name %></span>
                 </div>
             </div>
             <!--  -->

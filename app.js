@@ -4,6 +4,10 @@ const express = require("express");
 const expressLayout = require("express-ejs-layouts");
 const connectDB = require("./server/config/db");
 
+const session = require('express-session');
+const flash = require('express-flash-message');
+
+
 // connect to database
 connectDB();
 
@@ -15,6 +19,22 @@ app.use(express.json());
 
 //static files
 app.use(express.static("public"));
+
+//express session messages
+app.use(session({
+  secret: 'secretkey', // Change this to a secret key
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000*60*60*24*7 //1 week
+  }
+}));
+
+//express flash messages
+
+// app.use(flash({ sessionKeyName: 'flashMessage' }));
+app.use(flash());
+
 
 //teemplating engine
 app.use(expressLayout);
