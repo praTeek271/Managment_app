@@ -22,25 +22,59 @@ exports.customer_homepage =async(req,res)=>{
         desc:"This is home page of my website",
         name:"Lusifer"
     }
+
     const notify ={
         message: "HeY !!  "+mesg,
         name : user_name,
     }
     //import customer data from database
+    let perPage=10;
+    let page = req.query.page || 1;
     try{
-        const customer_data = await customerDB.find({});
+        const customer_data = await customerDB.aggregate([{$sort:{updatedAT:-1}}])
+        .skip(perPage * page-perPage)
+        .limit(perPage)
+        .exec();
+        const count=await customerDB.countDocuments();
         // console.log(customer_data);
-        res.render("customer",{local_data,notify,customer_data});
+        res.render("customer",
+        {
+            local_data,
+            notify,
+            customer_data,
+            current:page,
+            pages:Math.ceil(count/perPage)
+        });
     }
     catch(err){
-        console.log("Error for importing 'COUSTOMER' data from data base\n",err);
+        console.log("Error for importing 'COUSTOMER' data from database\n",err);
     }
 
     // console.log(mesg);
     // res.render("customer",{local_data,notify});
 }
 
-
+//view customer
+exports.view_customer =async(req,res)=>{
+    const local_data={
+        title:"View Customer Page",
+        desc:"This is view customer page of my website",
+        name:"Lusifer",
+    }
+    const notify ={
+        message: "HeY !!  ",
+        name : "Lusifer",
+    }
+    const id = req.params.id;
+    try{
+        const customer_data = await customerDB.findById(id);
+        // console.log(customer_data);
+        res.render("view_customer",{local_data,notify,customer_data});
+    }
+    catch(err){
+        console.log("Error for importing 'COUSTOMER' data from database\n",err);
+    }
+}
 
 //POST create new customer
 exports.addPOSTcustomer = async (req, res) => {

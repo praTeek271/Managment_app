@@ -99,17 +99,10 @@
                     </td>
                     <td>
                         <div class="btn-group justify-content-end " role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">👁‍🗨</button>
-                            <button type="button" class="btn btn-primary">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </div>
-
-                    </td>
-
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            <!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">👁‍🗨</button> -->
+                            <!-- Modal -->
+                            <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
@@ -167,7 +160,16 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                            <a href="/customer|views/<%= batch_data._id %>" class="btn btn-dark">👁‍🗨</a>
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </div>
+
+                    </td>
+
+
+
                 </tr>
 
                 <% }) %>
@@ -219,3 +221,58 @@
         $('.toast').toast('show');
     });
 </script>
+
+
+<!-- pagination -->
+
+<% if (customer_data.length>0) { %>
+    <nav arial-label="Dashboard Pagination">
+        <ul class="pagination justify-content-center mt-5">
+            <% if (current==1) { %>
+                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                </li>
+                <% } else { %>
+                    <li class="page-item"><a class="page-link" href="/customer?page=<%= current-1 %>" tabindex="-1"
+                            aria-disabled="true">Previous</a></li>
+                    <% } %>
+                        <%var i=(Number(current)> 5 ? Number(current) -4:1) %>
+                            <% if (i !==1) { %>
+                                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
+                                        aria-disabled="true">...</a></li>
+                                <% } %>
+
+                                    <% for(; i<=(Number(current)+4) && i<=pages;i++) { %>
+                                        <% if (i==current) { %>
+                                            <li class="page-item active" aria-current="page"><a class="page-link"
+                                                    href="/customer?page=<%= i %>">
+                                                    <%= i %>
+                                                </a></li>
+                                            <% } else { %>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/customer?page=<%= i %>">
+                                                        <%= i %>
+                                                    </a></li>
+                                                <% } %>
+                                                    <% if (i==Number(current) + 4 && i < pages) { %>
+                                                        <li class="page-item disabled"><a class="page-link" href="#"
+                                                                aria-disabled="true">...</a></li>
+                                                        <% } %>
+                                                            <% } %>
+                                                                <% if (current==pages) { %>
+                                                                    <li class="page-item disabled"><a class="page-link"
+                                                                            href="#" tabindex="-1"
+                                                                            aria-disabled="true">Last</a></li>
+                                                                    <% } else { %>
+                                                                        <li class="page-item"><a class="page-link"
+                                                                                href="/customer?page=<%= pages %>"
+                                                                                tabindex="-1"
+                                                                                aria-disabled="true">Last</a></li>
+                                                                        <% } %>
+
+
+
+
+        </ul>
+    </nav>
+
+    <% } %>
