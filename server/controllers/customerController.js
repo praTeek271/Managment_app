@@ -5,6 +5,7 @@ exports.customer_homepage =async(req,res)=>{
         title:"Customer Page",
         desc:"This is home page of my website",
         name:"Lusifer",
+        message: "",
     }
     res.render("customer",local_data);
 }
@@ -33,11 +34,13 @@ exports.homepage =async(req,res)=>{
 //POST create new customer
 
 
-exports.addcustomer = async (req, res) => {
+exports.addPOSTcustomer = async (req, res) => {
+    let username = req.body['recipient-firstname'] + " " + req.body['recipient-lastname'];
    const local_data = {
         title: "Home Page",
         desc: "This is the home page of my website",
         name: "Lusifer",
+        message: 'NEW user ADDED '+username,
     };
     console.log(req.body);
     res.render("customer", local_data);

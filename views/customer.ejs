@@ -22,63 +22,108 @@
                                 <div class="mb-3">
                                     <label for="recipient-firstname" class="col-form-label">Recipient's First
                                         Name:</label>
-                                    <input type="text" class="form-control" id="recipient-firstname" placeholder="John">
+                                    <input type="text" class="form-control" required id="recipient-firstname"
+                                        name="recipient-firstname" placeholder="John">
                                 </div>
                                 <div class="mb-3">
                                     <label for="recipient-lastname" class="col-form-label">Recipient's Last
                                         Name:</label>
-                                    <input type="text" class="form-control" id="recipient-laastname"
-                                        placeholder="Smith">
+                                    <input type="text" class="form-control" required id="recipient-laastname"
+                                        name="recipient-laastname" placeholder="Smith">
                                 </div>
                                 <div class="mb-3">
                                     <label for="address-text" class="col-form-label">Address:</label>
-                                    <textarea class="form-control" id="address-text"
+                                    <textarea class="form-control" required id="address-text" name="address-text"
                                         placeholder="xyz Street ; City & State"></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone-no" class="col-form-label">Phone No:</label>
-                                    <input type="number" class="form-control" id="phone-no" placeholder="9999999999">
+                                    <input type="number" class="form-control" required id="phone-no" name="phone-no"
+                                        placeholder="9999999999">
                                 </div>
                                 <div class="mb-3">
                                     <label for="credits" class="col-form-label">Credits:</label>
-                                    <input type="number" class="form-control" id="credits" value="100">
+                                    <input type="number" readonly class="form-control" name="credits" id="credits"
+                                        value="100">
                                 </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="padding: 0 0 3% 4%;">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit Details</button>
+                            <input type="submit" value="Submit Details" class="btn btn-primary">
                         </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row  py-3">
-        <ol class="list-group list-group-numbered">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-        </ol>
     </div>
-
 </div>
+
+<div class="row  py-3">
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+            </div>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+    </ol>
+</div>
+
+<div aria-live="polite" aria-atomic="true" class="position-relative" data-bs-autohide="false">
+    <!-- Position it: -->
+    <!-- - `.toast-container` for spacing between toasts -->
+    <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
+    <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+    <div class="toast-container top-0 end-0 p-3">
+        <% if (message) { %>
+            <!-- Then put toasts within -->
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                <div class="toast-header">
+                    <strong class="me-auto">Bootstrap</strong>
+                    <small class="text-body-secondary">just now</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    <%= message %>
+                </div>
+            </div>
+            <!--  -->
+        <% }else {%>
+            <!-- Then put toasts within -->
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                <div class="toast-header">
+                    <strong class="me-auto">Bootstrap</strong>
+                    <small class="text-body-secondary">just now</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    HI !!
+                </div>
+            </div>
+            <!--  -->
+        <% } %>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.toast').toast('show');
+    });
+</script>
