@@ -59,27 +59,122 @@
     </div>
 </div>
 
-<div class="row  py-3">
-    <ol class="list-group list-group-numbered">
-        <% customer_data.forEach(batch_data => { %>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold"><%= batch_data.firstname %> <%= batch_data.lastname %></div>
-                <%= batch_data.address %>
-                <a href="https://wa.me/<%= batch_data.phone_no %>/?text=Hello" target="_blank" style="background-color: #00ffff9b;border-radius: 30px; padding: 6px;margin: 0 8px 0 9px;"><%= batch_data.phone_no %></a>
+<div class="table-responsive">
+    <table class="table text-end table-hover" style="background-color:#33475b">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone No</th>
+                <th scope="col">Credits</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody style="text-transform: capitalize;">
+            <% customer_data.forEach(batch_data=> { %>
+                <tr>
+                    <td>
+                        <%= batch_data.firstname %>
+                            <%= batch_data.lastname %>
+                    </td>
+                    <td>
+                        <%= batch_data.address %>
+                    </td>
+                    <td><a href="https://wa.me/<%= batch_data.phone_no %>/?text=Hello" target="_blank"
+                            style="text-decoration: none;">
+                            <%= batch_data.phone_no %>
+                        </a>
+                    </td>
+                    <td>
+                        <% if (batch_data.credits<20) { %>
+                            <span class="btn btn-danger rounded-4" style="margin-left: 8px;">
+                                <%= batch_data.credits %>
+                            </span>
+                            <% } else { %>
+                                <span class="btn btn-outline-warning rounded-4" style="margin-left: 8px;">
+                                    <%= batch_data.credits %>
+                                </span>
+                                <% } %>
 
-                <span class="btn btn-outline-warning rounded-4" style="margin-left: 8px;"><%= batch_data.credits %></span>
-            </div>
-            <span class="">
-                <a href="#" class="btn btn-primary">Edit</a>
-                
-                <a href="#" class="btn btn-danger">Delete</a>
-            </span>
-        </li>
-        
-        <% }) %>
-    </ol>
+                    </td>
+                    <td>
+                        <div class="btn-group justify-content-end " role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">👁‍🗨</button>
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </div>
+
+                    </td>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                        <%= batch_data.firstname %>'s Details
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= batch_data.firstname %>
+                                                <%= batch_data.lastname %>
+                                        </h5>
+                                        <h6 class="card-subtitle mb-2 text-body-secondary">
+                                            <%= batch_data.phone_no %>
+                                        </h6>
+                                        <p class="card-text">
+                                            <%= batch_data.address %> .
+                                        </p>
+                                        <a href="#" class="card-link rounded-4 " align="center"
+                                            style="background-color: coral;padding: 4px 8px 4px 8px; color: aliceblue;">
+                                            <%= batch_data.credits %>
+                                        </a>
+                                    </div>
+                                    <vl></vl>
+                                    <div class="card mb-3" style="max-width: 540px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <img src="https://media.harrypotterfanzone.com/philosophers-stone-adult-edition-300x0-c-default.jpg"
+                                                    class="img-fluid rounded-start" alt="..."
+                                                    style="height: 100%;width: 100%;">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">This is a wider card with supporting text
+                                                        below as
+                                                        a natural lead-in to additional content. This content is a
+                                                        little
+                                                        bit longer.</p>
+                                                    <p class="card-text"><small class="text-body-secondary">Last
+                                                            updated 3
+                                                            mins ago</small></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+
+                <% }) %>
+        </tbody>
+    </table>
 </div>
+
 
 <div aria-live="polite" aria-atomic="true" class="position-relative" data-bs-autohide="true">
     <!-- Position it: -->
@@ -87,7 +182,7 @@
     <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
     <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
     <div class="toast-container top-0 end-0 p-3">
-        <% if (notify.message !== '') { %>
+        <% if (notify.message !=='' ) { %>
             <!-- Then put toasts within -->
             <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
                 <div class="toast-header">
@@ -96,24 +191,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body">
-                    <%= notify.message %><span style="color:#2196F3;text-transform: uppercase;font-family: cursive;"><%= notify.name %></span>
+                    <%= notify.message %><span style="color:#2196F3;text-transform: uppercase;font-family: cursive;">
+                            <%= notify.name %>
+                        </span>
                 </div>
             </div>
             <!--  -->
-        <% }else {%>
-            <!-- Then put toasts within -->
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-                <div class="toast-header">
-                    <strong class="me-auto">Notification</strong>
-                    <small class="text-body-secondary">just now</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <% }else {%>
+                <!-- Then put toasts within -->
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                    <div class="toast-header">
+                        <strong class="me-auto">Notification</strong>
+                        <small class="text-body-secondary">just now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        HI !!
+                    </div>
                 </div>
-                <div class="toast-body">
-                    HI !!
-                </div>
-            </div>
-            <!--  -->
-        <% } %>
+                <!--  -->
+                <% } %>
     </div>
 </div>
 

@@ -28,7 +28,7 @@ exports.customer_homepage =async(req,res)=>{
     }
     //import customer data from database
     try{
-        const customer_data = await customerDB.find({}).limit(10);
+        const customer_data = await customerDB.find({});
         // console.log(customer_data);
         res.render("customer",{local_data,notify,customer_data});
     }
@@ -36,8 +36,8 @@ exports.customer_homepage =async(req,res)=>{
         console.log("Error for importing 'COUSTOMER' data from data base\n",err);
     }
 
-    console.log(mesg);
-    res.render("customer",{local_data,notify});
+    // console.log(mesg);
+    // res.render("customer",{local_data,notify});
 }
 
 
