@@ -67,8 +67,8 @@ exports.view_customer =async(req,res)=>{
     }
     const id = req.params.id;
     try{
-        const customer_data = await customerDB.findById(id);
-        // console.log(customer_data);
+        const customer_data = await customerDB.findOne({ _id: id});
+        console.log(customer_data);
         res.render("view_customer",{local_data,notify,customer_data});
     }
     catch(err){
