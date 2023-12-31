@@ -18,35 +18,37 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/adduser">
+                            <form action="/adduser" method="POST">
                                 <div class="mb-3">
-                                    <label for="recipient-firstname" class="col-form-label">Recipient's First Name:</label>
+                                    <label for="recipient-firstname" class="col-form-label">Recipient's First
+                                        Name:</label>
                                     <input type="text" class="form-control" id="recipient-firstname" placeholder="John">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="recipient-laastname" class="col-form-label">Recipient's Last Name:</label>
-                                    <input type="text" class="form-control" id="recipient-laastname" placeholder="Smith">
+                                    <label for="recipient-lastname" class="col-form-label">Recipient's Last
+                                        Name:</label>
+                                    <input type="text" class="form-control" id="recipient-laastname"
+                                        placeholder="Smith">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Address:</label>
-                                    <textarea class="form-control" id="message-text" placeholder="xyz Street ; City & State"></textarea>
+                                    <label for="address-text" class="col-form-label">Address:</label>
+                                    <textarea class="form-control" id="address-text"
+                                        placeholder="xyz Street ; City & State"></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Phone No:</label>
-                                    <input type="number" class="form-control" id="address-text" placeholder="9999999999">
+                                    <label for="phone-no" class="col-form-label">Phone No:</label>
+                                    <input type="number" class="form-control" id="phone-no" placeholder="9999999999">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="phone-no" class="col-form-label">Credits:</label>
-                                    <input type="number" class="form-control" id="phone-no" value="100">
+                                    <label for="credits" class="col-form-label">Credits:</label>
+                                    <input type="number" class="form-control" id="credits" value="100">
                                 </div>
-                            </form>
                         </div>
-
-
-                        <div class="modal-footer">
+                        <div class="form-group">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Submit Details</button>
+                            <button type="submit" class="btn btn-primary">Submit Details</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

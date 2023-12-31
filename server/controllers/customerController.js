@@ -30,7 +30,8 @@ exports.homepage =async(req,res)=>{
     res.render("home",local_data);
 }
 
-//homepage
+//POST create new customer
+
 
 exports.addcustomer = async (req, res) => {
    const local_data = {
@@ -38,6 +39,6 @@ exports.addcustomer = async (req, res) => {
         desc: "This is the home page of my website",
         name: "Lusifer",
     };
-
+    console.log(req.body);
     res.render("customer", local_data);
 };
