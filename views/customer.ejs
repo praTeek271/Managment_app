@@ -61,27 +61,23 @@
 
 <div class="row  py-3">
     <ol class="list-group list-group-numbered">
+        <% customer_data.forEach(batch_data => { %>
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
+                <div class="fw-bold"><%= batch_data.firstname %> <%= batch_data.lastname %></div>
+                <%= batch_data.address %>
+                <a href="https://wa.me/<%= batch_data.phone_no %>/?text=Hello" target="_blank" style="background-color: #00ffff9b;border-radius: 30px; padding: 6px;margin: 0 8px 0 9px;"><%= batch_data.phone_no %></a>
+
+                <span class="btn btn-outline-warning rounded-4" style="margin-left: 8px;"><%= batch_data.credits %></span>
             </div>
-            <span class="badge bg-primary rounded-pill">14</span>
+            <span class="">
+                <a href="#" class="btn btn-primary">Edit</a>
+                
+                <a href="#" class="btn btn-danger">Delete</a>
+            </span>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-            </div>
-            <span class="badge bg-primary rounded-pill">14</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-            </div>
-            <span class="badge bg-primary rounded-pill">14</span>
-        </li>
+        
+        <% }) %>
     </ol>
 </div>
 

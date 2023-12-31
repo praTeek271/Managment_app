@@ -13,14 +13,10 @@ exports.homepage =async(req,res)=>{
 
 // cutomer homepage
 exports.customer_homepage =async(req,res)=>{
-    // const mesg= "";
-    // const user_name= "";
-    // try {
+    
     const mesg = req.flash('adduser');
     const user_name = req.flash('newuser_name');
-    // }catch (error) {
-    //     console.log(error);
-    // }
+    
     const local_data={
         title:"Customer Page",
         desc:"This is home page of my website",
@@ -30,6 +26,16 @@ exports.customer_homepage =async(req,res)=>{
         message: "HeY !!  "+mesg,
         name : user_name,
     }
+    //import customer data from database
+    try{
+        const customer_data = await customerDB.find({}).limit(10);
+        // console.log(customer_data);
+        res.render("customer",{local_data,notify,customer_data});
+    }
+    catch(err){
+        console.log("Error for importing 'COUSTOMER' data from data base\n",err);
+    }
+
     console.log(mesg);
     res.render("customer",{local_data,notify});
 }
@@ -37,8 +43,6 @@ exports.customer_homepage =async(req,res)=>{
 
 
 //POST create new customer
-
-
 exports.addPOSTcustomer = async (req, res) => {
     let username = req.body.recipient_firstname;
     // const local_data = {
