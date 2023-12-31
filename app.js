@@ -5,7 +5,8 @@ const expressLayout = require("express-ejs-layouts");
 const connectDB = require("./server/config/db");
 
 const session = require('express-session');
-const flash = require('express-flash-message');
+// const flash = require('express-flash-message');
+const flash = require('connect-flash');
 
 
 // connect to database
@@ -32,8 +33,8 @@ app.use(session({
 
 //express flash messages
 
-// app.use(flash({ sessionKeyName: 'flashMessage' }));
-app.use(flash());
+app.use(flash({ sessionKeyName: 'flashMessage' }));
+// app.use(flash());
 
 
 //teemplating engine

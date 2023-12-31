@@ -91,11 +91,11 @@
     <!-- - `top-0` & `end-0` to position the toasts in the upper right corner -->
     <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
     <div class="toast-container top-0 end-0 p-3">
-        <% if (notify.message) { %>
+        <% if (notify.message !== '') { %>
             <!-- Then put toasts within -->
             <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
                 <div class="toast-header">
-                    <strong class="me-auto">Bootstrap</strong>
+                    <strong class="me-auto">Notification</strong>
                     <small class="text-body-secondary">just now</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
