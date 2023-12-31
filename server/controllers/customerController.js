@@ -112,6 +112,56 @@ exports.addPOSTcustomer = async (req, res) => {
     delete newcustomer,username;
 };
 
+//update customer
+exports.update_customer =async(req,res)=>{
+    const local_data={
+        title:"Update Customer Page",
+        desc:"This is update customer page of my website",
+        name:"Lusifer",
+    }
+    const notify ={
+        message: "DATABASE updated ",
+        name : "Lusifer",
+    }
+    const id = req.params.id;
+    try{
+        const customer_data = await customerDB.findOne({ _id: id});
+    // making changes
+        if (customer_data.firstname !=req.body.recipient_firstname) {
+            customer_data.firstname = req.body.recipient_firstname;
+        } else {
+            customer_data.firstname = customer_data.firstname;
+        }
+        if (customer_data.lastname !=req.body.recipient_laastname) {
+            customer_data.lastname = req.body.recipient_laastname;
+        } else {
+            customer_data.lastname = customer_data.lastname;
+        }
+        if (customer_data.phone_no !=req.body.phone_no) {
+            customer_data.phone_no = req.body.phone_no;
+        } else {
+            customer_data.phone_no = customer_data.phone_no;
+        }
+        if (customer_data.address !=req.body.address_text) {
+            customer_data.address = req.body.address_text;
+        } else {
+            customer_data.address = customer_data.address;
+        }
+        if (customer_data.credits !=req.body.credits) {
+            customer_data.credits = req.body.credits;
+        } else {
+            customer_data.credits = customer_data.credits;
+        }
+        await customer_data.save();
+        console.log("Data Updated");
+        res.redirect("/customer/customerviews/"+id);
+        
+        res.render("view_customer",{local_data,notify,customer_data});
+    }
+    catch(err){
+        console.log("Error for importing 'COUSTOMER' data from database\n",err);
+    }
+}
 
 // books homepage
 exports.books_homepage =async(req,res)=>{

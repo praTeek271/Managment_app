@@ -54,32 +54,32 @@
         </div>
 
         <div class="container-fluid bg-dark rounded-3" id="edit-form">
-            <form action="/customer" method="POST">
+            <form action="/customer/customerviews/<%= customer_data._id %>/update" method="POST">
                 <div class="mb-3">
                     <label for="recipient-firstname" class="col-form-label">Recipient's First
                         Name:</label>
                     <input type="text" class="form-control" required id="recipient_firstname" name="recipient_firstname"
-                        placeholder="John">
+                        value="<%= customer_data.firstname %>">
                 </div>
                 <div class="mb-3">
                     <label for="recipient-lastname" class="col-form-label">Recipient's Last
                         Name:</label>
                     <input type="text" class="form-control" required id="recipient_laastname" name="recipient_laastname"
-                        placeholder="Smith">
+                    value="<%= customer_data.lastname %>">
                 </div>
                 <div class="mb-3">
                     <label for="address-text" class="col-form-label">Address:</label>
                     <textarea class="form-control" required id="address_text" name="address_text"
-                        placeholder="xyz Street ; City & State"></textarea>
+                    value="<%= customer_data.address %>" placeholder="<%= customer_data.address %>"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="phone-no" class="col-form-label">Phone No:</label>
                     <input type="number" class="form-control" required id="phone_no" name="phone_no"
-                        placeholder="9999999999">
+                    value="<%= customer_data.phone_no %>">
                 </div>
                 <div class="mb-3">
                     <label for="credits" class="col-form-label">Credits:</label>
-                    <input type="number" class="form-control" name="credits" id="credits" value="100">
+                    <input type="number" class="form-control" name="credits" id="credits" value="<%= customer_data.credits %>">
                 </div>
                 <div class="form-group justify-content-end" style="padding: 0 0 3% 4%;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -99,3 +99,42 @@
             }
         </script>
         </div>
+
+<!-- toast notification -->
+<div aria-live="polite" aria-atomic="true" class="position-relative" data-bs-autohide="true">
+    <div class="toast-container top-0 end-0 p-3">
+        <% if (notify.message !=='' ) { %>
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Notification</strong>
+                    <small class="text-body-secondary">just now</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    <%= notify.message %>
+                </div>
+            </div>
+            <!--  -->
+            <% }else {%>
+                <!-- Then put toasts within -->
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                    <div class="toast-header">
+                        <strong class="me-auto">Notification</strong>
+                        <small class="text-body-secondary">just now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        HI !!
+                    </div>
+                </div>
+                <!--  -->
+                <% } %>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.toast').toast('show');
+    });
+</script>
+
