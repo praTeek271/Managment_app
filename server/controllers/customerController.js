@@ -163,12 +163,3 @@ exports.update_customer =async(req,res)=>{
     }
 }
 
-// books homepage
-exports.books_homepage =async(req,res)=>{
-    const local_data={
-        title:"Books Page",
-        desc:"This is book page of my website",
-        name:"Lusifer",
-    }
-    res.render("books",local_data);
-}

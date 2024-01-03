@@ -44,7 +44,9 @@ app.set("view engine", "ejs");
 
 //routes
 
-app.use("/", require("./server/routes/customer"));
+app.use("/", require("./server/routes/routes"));
+// app.use("/books/", require("./server/routes/book"));
+
 
 
 // _________________________________________________________________________________________
